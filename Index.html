@@ -2,14 +2,26 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="css\bootstrap.min.css">
+    <script src="js\jquery-3.3.1.min.js"></script>
+    <script src="js\bootstrap.min.js"></script>
     <title></title>
   </head>
   <body>
-    <div id="contenedor" class="">
+    <header>
+      <h2></h2>
+    </header>
+    <div id="contenedor" class="bg-green" style="display:none">
 
     </div>
-    <div id="botones" class="">
-
+    <div id="botones" class="bg-grey">
+      <div class="mx-auto">
+        <button id="" type="button" class="btn btn-info" onclick="$.ShowActions.createTable(estudiantes);">Info 1</button>
+        <button id="" type="button" class="btn btn-info" onclick="$.ShowActions.displayAverage(estudiantes);">Info 2</button>
+        <button id="" type="button" class="btn btn-info" onclick="$.ShowActions.displayMax(estudiantes);">Info 3</button>
+        <button id="" type="button" class="btn btn-info" onclick="$.ShowActions.displayMin(estudiantes);">Info 4</button>
+      </div>
     </div>
   </body>
 </html>
+<script type="text/javascript" src="js\fileJSON.js"></script>
