@@ -21,11 +21,33 @@ var estudiantes = [
   },
   //muestra todos los objetos json
   $.ShowActions.createTable = function(estudiantes){
-    $('#contenedor').hide();
+
+    for (var i in estudiantes){
+      var file = [];
+      file.push("["+ estudiantes[i].codigo,estudiantes[i].nombre,estudiantes[i].nota +"]");
+      console.log(file);
+      /**
+      $('#tabla').append(
+        '<tr><td>'+ estudiantes[i].codigo +'</td><td>'+ estudiantes[i].nombre +'</td><td>'+ estudiantes[i].nota +'</td></tr>'
+      );
+      $(document).ready( function ()
+       {
+          $('#tabla').DataTable(
+            {
+              data: file
+            }
+          );
+        } );
+
+
+      $('#container-table').show();
+      */
+    };
+
   },
   //muestra el promedio de notas
   $.ShowActions.displayAverage = function(estudiantes){
-    $('#contenedor').show();
+    $('#container-table').hide();
   },
   //muestra alumno con mayor nota
   $.ShowActions.displayMax = function(estudiantes){
