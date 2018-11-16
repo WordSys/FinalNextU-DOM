@@ -3,23 +3,41 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="css\bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/>
+    <script type="text/javascript" src="DataTables/datatables.min.js"></script>
     <script src="js\jquery-3.3.1.min.js"></script>
     <script src="js\bootstrap.min.js"></script>
     <title></title>
   </head>
   <body>
     <header>
-      <h2></h2>
+      <div id="titulo" class="container">
+        <h2> Información de estudiantes. </h2>
+      </div>
     </header>
-    <div id="contenedor" class="bg-green" style="display:none">
+    <div id="contenedor" class="container" style="display:none">
+      <table id="tabla">
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Nombre</th>
+            <th>Nota</th>
+          </tr>
+        </thead>
+        <tbody>
 
+        </tbody>
+      </table>
     </div>
-    <div id="botones" class="bg-grey">
+    <div class="">
+      <!-- Content here -->
+    </div>
+    <div id="botones" class="container">
       <div class="mx-auto">
-        <button id="" type="button" class="btn btn-info" onclick="$.ShowActions.createTable(estudiantes);">Info 1</button>
-        <button id="" type="button" class="btn btn-info" onclick="$.ShowActions.displayAverage(estudiantes);">Info 2</button>
-        <button id="" type="button" class="btn btn-info" onclick="$.ShowActions.displayMax(estudiantes);">Info 3</button>
-        <button id="" type="button" class="btn btn-info" onclick="$.ShowActions.displayMin(estudiantes);">Info 4</button>
+        <button id="" type="button" class="btn btn-info" onclick="$.ShowActions.createTable(estudiantes);">Mostrar</button>
+        <button id="" type="button" class="btn btn-info" onclick="$.ShowActions.displayAverage(estudiantes);">Nota Promedio</button>
+        <button id="" type="button" class="btn btn-info" onclick="$.ShowActions.displayMax(estudiantes);">Mayor Nota</button>
+        <button id="" type="button" class="btn btn-info" onclick="$.ShowActions.displayMin(estudiantes);">Menor Nota</button>
       </div>
     </div>
   </body>
