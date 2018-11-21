@@ -13,38 +13,34 @@ var estudiantes = [
 
 (function($){
   $.ShowActions = $.ShowActions || {}
-  $.ShowActions.init = function(){
-
-  },
-  //muestra todos los objetos json
   $.ShowActions.createTable = function(estudiantes)
   {
-    $('#tabla').html();
+    $('#tabla').empty();
+    $('#tabla').html('<thead><tr><th>Código</th><th>Nombre</th><th>Nota</th></tr></thead>');
     for (var i in estudiantes)
     {
+
       $('#tabla').append(
         '<tr><td>'+ estudiantes[i].codigo +'</td><td>'+ estudiantes[i].nombre +'</td><td>'+ estudiantes[i].nota +'</td></tr>'
       );
-      
     };
-
     $('#container-table').show();
     $('#mostrar').attr('disabled',true);
-
   },
   //muestra el promedio de notas
   $.ShowActions.displayAverage = function(estudiantes){
     var c = 0;
     var p = 0;
     var e = 0;
-    for(var i in estudiantes){
-      c = c + estudiantes[i].nota;
-      e = i;
-    }
-    p = c / e;
-
-    $('#tabla').html('<tr><td>'+ "Nota Promedio" +'</td><td>'+ p.toFixed(2) +'</td></tr>');
-    $('#container-table').show();
+      for(var i in estudiantes){
+        c = c + estudiantes[i].nota;
+        e = i;
+      }
+      p = c / e;
+    $('#tabla').html(
+      '<thead><tr><th>Código</th><th>Nombre</th><th>Nota</th></tr></thead>'
+      + '<tr><td></td><td>'+ "Nota Promedio" +'</td><td>'+ p.toFixed(2) +'</td></tr>'
+    );
     $('#mostrar').attr('disabled',false);
   },
   //muestra alumno con mayor nota
@@ -61,11 +57,13 @@ var estudiantes = [
           + '<tr><td>'+ estudiantes[i].codigo +'</td><td>'+ estudiantes[i].nombre +'</td><td>'+ estudiantes[i].nota +'</td></tr>'
         );
         $('#container-table').show();
+        $('#mostrar').attr('disabled',false);
       }
     }
   },
   //muestra alumno con menor nota
   $.ShowActions.displayMin = function(estudiantes){
+
     var arreglo = [];
     for(var i in estudiantes){
       arreglo[i] = estudiantes[i].nota;
@@ -78,12 +76,11 @@ var estudiantes = [
           + '<tr><td>'+ estudiantes[i].codigo +'</td><td>'+ estudiantes[i].nombre +'</td><td>'+ estudiantes[i].nota +'</td></tr>'
         );
         $('#container-table').show();
+        $('#mostrar').attr('disabled',false);
       }
     }
   }
 })(jQuery);
-
-$.ShowActions.init();
 
 /**
 ("["+ estudiantes[i].codigo,estudiantes[i].nombre,estudiantes[i].nota +"]");
