@@ -3,8 +3,7 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="css\bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+    <link rel="stylesheet" href="js\jquery-3.3.1.min.js">
     <script src="js\jquery-3.3.1.min.js"></script>
     <script src="js\bootstrap.min.js"></script>
     <title></title>
@@ -32,7 +31,7 @@
 
           </div>
           <div class="col-md-auto" >
-            <table id="tabla">
+            <table id="tabla" class="table table-dark">
               <thead>
                 <tr>
                   <th>Código</th>
@@ -56,10 +55,10 @@
 
           </div>
           <div class="col-md-auto">
-            <button id="" type="button" class="btn btn-info" onclick="$.ShowActions.createTable(estudiantes);">Mostrar</button>
-            <button id="" type="button" class="btn btn-info" onclick="$.ShowActions.displayAverage(estudiantes);">Nota Promedio</button>
-            <button id="" type="button" class="btn btn-info" onclick="$.ShowActions.displayMax(estudiantes);">Mayor Nota</button>
-            <button id="" type="button" class="btn btn-info" onclick="$.ShowActions.displayMin(estudiantes);">Menor Nota</button>
+            <button id="mostrar" type="button" class="btn btn-info" onclick="$.ShowActions.createTable(estudiantes);">Mostrar</button>
+            <button id="prom" type="button" class="btn btn-info" onclick="$.ShowActions.displayAverage(estudiantes);">Nota Promedio</button>
+            <button id="max" type="button" class="btn btn-info" onclick="$.ShowActions.displayMax(estudiantes);">Mayor Nota</button>
+            <button id="min" type="button" class="btn btn-info" onclick="$.ShowActions.displayMin(estudiantes);">Menor Nota</button>
           </div>
           <div class="col col-lg-2">
 
