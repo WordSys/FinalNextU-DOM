@@ -17,17 +17,33 @@ var estudiantes = [
 
   },
   //muestra todos los objetos json
-  $.ShowActions.createTable = function(estudiantes){
-    for (var i in estudiantes){
-      var file = [];
-      file.push("["+ estudiantes[i].codigo,estudiantes[i].nombre,estudiantes[i].nota +"]");
-      $('#tabla').html(
-        '<tr><td>'+ estudiantes[i].codigo +'</td><td>'+ estudiantes[i].nombre +'</td><td>'+ estudiantes[i].nota +'</td></tr>'
+  $.ShowActions.createTable = function(estudiantes)
+  {
+    for (var i in estudiantes)
+    {
+      var dataSet = [];
+      dataSet.push(
+        [
+          estudiantes[i].codigo,
+          estudiantes[i].nombre,
+          estudiantes[i].nota
+        ]
       );
     };
+    $.ShowActions.cargarDatos(dataSet);
     $('#container-table').show();
     $('#mostrar').attr('disabled',true);
 
+  },
+  $.ShowActions.cargarDatos = function(dataSet)
+  {
+      $("#tabla").DataTable(
+        {
+            data: dataSet,
+            language: {
+                "url": "{{ asset('build/js/spanish.json') }}"
+            }
+        });
   },
   //muestra el promedio de notas
   $.ShowActions.displayAverage = function(estudiantes){
@@ -81,3 +97,10 @@ var estudiantes = [
 })(jQuery);
 
 $.ShowActions.init();
+
+/**
+("["+ estudiantes[i].codigo,estudiantes[i].nombre,estudiantes[i].nota +"]");
+$('#tabla').html(
+  '<tr><td>'+ estudiantes[i].codigo +'</td><td>'+ estudiantes[i].nombre +'</td><td>'+ estudiantes[i].nota +'</td></tr>'
+);
+*/
