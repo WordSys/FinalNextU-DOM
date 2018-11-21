@@ -14,48 +14,69 @@ var estudiantes = [
 (function($){
   $.ShowActions = $.ShowActions || {}
   $.ShowActions.init = function(){
-    $('#contenedor').show();
-    $('#contenedor').append('<p> Hola ---- !!! </p>');
-
 
   },
   //muestra todos los objetos json
   $.ShowActions.createTable = function(estudiantes){
-
     for (var i in estudiantes){
       var file = [];
       file.push("["+ estudiantes[i].codigo,estudiantes[i].nombre,estudiantes[i].nota +"]");
-      console.log(file);
-      /**
-      $('#tabla').append(
+      $('#tabla').html(
         '<tr><td>'+ estudiantes[i].codigo +'</td><td>'+ estudiantes[i].nombre +'</td><td>'+ estudiantes[i].nota +'</td></tr>'
       );
-      $(document).ready( function ()
-       {
-          $('#tabla').DataTable(
-            {
-              data: file
-            }
-          );
-        } );
-
-
-      $('#container-table').show();
-      */
     };
+    $('#container-table').show();
+    $('#mostrar').attr('disabled',true);
 
   },
   //muestra el promedio de notas
   $.ShowActions.displayAverage = function(estudiantes){
-    $('#container-table').hide();
+    var c = 0;
+    var p = 0;
+    var e = 0;
+    for(var i in estudiantes){
+      c = c + estudiantes[i].nota;
+      e = i;
+    }
+    p = c / e;
+
+    $('#tabla').html('<tr><td>'+ "Nota Promedio" +'</td><td>'+ p.toFixed(2) +'</td></tr>');
+    $('#container-table').show();
+    $('#mostrar').attr('disabled',false);
   },
   //muestra alumno con mayor nota
   $.ShowActions.displayMax = function(estudiantes){
-    $('#contenedor').hide();
+    var arreglo = [];
+    for(var i in estudiantes){
+      arreglo[i] = estudiantes[i].nota;
+    }
+    var max = Math.max.apply(null,arreglo);
+    for (var i in estudiantes) {
+      if ( max == estudiantes[i].nota ){
+        $('#tabla').html(
+          '<thead><tr><th>Código</th><th>Nombre</th><th>Nota</th></tr></thead>'
+          + '<tr><td>'+ estudiantes[i].codigo +'</td><td>'+ estudiantes[i].nombre +'</td><td>'+ estudiantes[i].nota +'</td></tr>'
+        );
+        $('#container-table').show();
+      }
+    }
   },
   //muestra alumno con menor nota
   $.ShowActions.displayMin = function(estudiantes){
-    $('#contenedor').show();
+    var arreglo = [];
+    for(var i in estudiantes){
+      arreglo[i] = estudiantes[i].nota;
+    }
+    var min = Math.min.apply(null,arreglo);
+    for (var i in estudiantes) {
+      if ( min == estudiantes[i].nota ){
+        $('#tabla').html(
+          '<thead><tr><th>Código</th><th>Nombre</th><th>Nota</th></tr></thead>'
+          + '<tr><td>'+ estudiantes[i].codigo +'</td><td>'+ estudiantes[i].nombre +'</td><td>'+ estudiantes[i].nota +'</td></tr>'
+        );
+        $('#container-table').show();
+      }
+    }
   }
 })(jQuery);
 
