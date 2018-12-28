@@ -79,6 +79,9 @@ var estudiantes = [
         $('#mostrar').attr('disabled',false);
       }
     }
+  },
+  $.ShowActions.registrar = function(){
+    alert(" con esta funcion voy a registrar un estudiante ");
   }
 })(jQuery);
 
