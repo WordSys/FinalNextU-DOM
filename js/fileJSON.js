@@ -13,6 +13,13 @@ var estudiantes = [
 
 (function($){
   $.ShowActions = $.ShowActions || {}
+  $.ShowActions.init = function()
+  {
+    $('#text-codigo').focus();
+    $('#cerrar').attr('disabled',true);
+    $('#registrar').attr('disabled',true);
+
+  },
   $.ShowActions.createTable = function(estudiantes)
   {
     $('#tabla').empty();
@@ -25,7 +32,9 @@ var estudiantes = [
       );
     };
     $('#container-table').show();
+    $('#tabla').show();
     $('#mostrar').attr('disabled',true);
+    $('#cerrar').attr('disabled',false);
   },
   //muestra el promedio de notas
   $.ShowActions.displayAverage = function(estudiantes){
@@ -41,7 +50,9 @@ var estudiantes = [
       '<thead><tr><th>Código</th><th>Nombre</th><th>Nota</th></tr></thead>'
       + '<tr><td></td><td>'+ "Nota Promedio" +'</td><td>'+ p.toFixed(2) +'</td></tr>'
     );
+    $('#tabla').show();
     $('#mostrar').attr('disabled',false);
+    $('#cerrar').attr('disabled',false);
   },
   //muestra alumno con mayor nota
   $.ShowActions.displayMax = function(estudiantes){
@@ -57,6 +68,8 @@ var estudiantes = [
           + '<tr><td>'+ estudiantes[i].codigo +'</td><td>'+ estudiantes[i].nombre +'</td><td>'+ estudiantes[i].nota +'</td></tr>'
         );
         $('#container-table').show();
+        $('#tabla').show();
+        $('#cerrar').attr('disabled',false);
         $('#mostrar').attr('disabled',false);
       }
     }
@@ -76,15 +89,32 @@ var estudiantes = [
           + '<tr><td>'+ estudiantes[i].codigo +'</td><td>'+ estudiantes[i].nombre +'</td><td>'+ estudiantes[i].nota +'</td></tr>'
         );
         $('#container-table').show();
+        $('#tabla').show();
+        $('#cerrar').attr('disabled',false);
         $('#mostrar').attr('disabled',false);
       }
     }
   },
   $.ShowActions.registrar = function(){
+  
+    estudiantes.push({"codigo":+ $('#text-codigo').val() +,"nombre":+ $('#text-nombre').val() +,"nota":+ $('#text-nota').val() +});
     alert(" con esta funcion voy a registrar un estudiante ");
+  },
+  $.ShowActions.valida = function(container)
+  {
+    if (!$(container).empty()) {
+        return true;
+    }
+  },
+  $.ShowActions.cerrar = function()
+  {
+    $('#tabla').hide();
+    $('#text-codigo').focus();
+    $('#cerrar').attr('disabled',true);
+    $('#mostrar').attr('disabled',false);
   }
 })(jQuery);
-
+$.ShowActions.init();
 /**
 ("["+ estudiantes[i].codigo,estudiantes[i].nombre,estudiantes[i].nota +"]");
 $('#tabla').html(
