@@ -18,9 +18,7 @@ var estudiantes = [
     $('#text-codigo').focus();
     $('#cerrar').attr('disabled',true);
     $('#registrar').attr('disabled',true);
-    if ($('#text-nota').focus() && $('#text-nota').blur()) {
-      $('#registrar').attr('disabled',false);
-    }
+
   },
   $.ShowActions.createTable = function(estudiantes)
   {
@@ -108,6 +106,11 @@ var estudiantes = [
     console.log(cod + " - " + nom + " - " + not);
     alert(" con esta funcion voy a registrar un estudiante ");
   },
+  $.ShowActions.habilita = function(container)
+  {
+    $('#' + container).attr('disabled',false);
+    $('#' + container).focus();
+  },
   $.ShowActions.valida = function(container)
   {
     if (!$(container).empty()) {
@@ -123,6 +126,7 @@ var estudiantes = [
   }
 })(jQuery);
 $.ShowActions.init();
+
 /**
 ("["+ estudiantes[i].codigo,estudiantes[i].nombre,estudiantes[i].nota +"]");
 $('#tabla').html(
