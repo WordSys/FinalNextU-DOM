@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="js\jquery-3.3.1.min.js">
     <script src="js\jquery-3.3.1.min.js"></script>
     <script src="js\bootstrap.min.js"></script>
+
     <title></title>
   </head>
   <body>
@@ -25,6 +26,7 @@
       </div>
       <div class="container pt-3">
         <div id="" class="row justify-content-md-center">
+          <form id="formulario">
           <div class="col-md-auto">
                 <div class="input-group-prepend pt-2">
                   <span class="input-group-text col-md-4" id="basic-addon1">Código</span>
@@ -39,6 +41,8 @@
                   <input id="text-nota" type="text" class="form-control" placeholder="Nota" onBlur="$.ShowActions.habilita('registrar')" aria-label="Nota" aria-describedby="basic-addon1">
                 </div>
             </div>
+
+          </form>
           </div>
       </div>
     </header>
@@ -62,6 +66,7 @@
 
           </div>
           <div class="col-md-auto" >
+
             <table id="tabla" class="table table-dark">
               <thead>
                 <tr>
@@ -74,6 +79,7 @@
 
               </tbody>
             </table>
+
           </div>
           <div class="col col-lg-2">
 
@@ -86,7 +92,7 @@
 
           </div>
           <div class="col-md-auto">
-            <button id="registrar" type="button" class="btn btn-info" onclick="$.ShowActions.registrar();">Registrar</button>
+            <button id="registrar" type="button" class="btn btn-info" onclick="$.ShowActions.registrar(estudiantes);">Registrar</button>
             <button id="mostrar" type="button" class="btn btn-info" onclick="$.ShowActions.createTable(estudiantes);">Mostrar</button>
             <button id="prom" type="button" class="btn btn-info" onclick="$.ShowActions.displayAverage(estudiantes);">Nota Promedio</button>
             <button id="max" type="button" class="btn btn-info" onclick="$.ShowActions.displayMax(estudiantes);">Mayor Nota</button>
