@@ -1,3 +1,4 @@
+/*
 //<script type="text/javascript" src="estudiantes.json"></script>
   var estudiantes = '['+
       '{"codigo":"001","nombre":"Juan Saavedra","nota":7.52},'+
@@ -10,10 +11,25 @@
       '{"codigo":"008","nombre":"Marcela Grimaldi","nota":2.25},'+
       '{"codigo":"009","nombre":"German Sosa","nota":7.80},'+
       '{"codigo":"010","nombre":"Ignacio Lezacano","nota":9.10}'+
-  ']'
+  ']';
   var obJson = JSON.parse(estudiantes);
-
+*/
 (function($){
+  var estudiantes ={ "estudiantes":[
+    {"codigo":"001","nombre":"Juan Saavedra","nota":7.52},
+    {"codigo":"002","nombre":"Mariano Perron","nota":8.32},
+    {"codigo":"003","nombre":"Griselda Ordoqui","nota":5.40},
+    {"codigo":"004","nombre":"Juliana Massini","nota":6.50},
+    {"codigo":"005","nombre":"Pedro Lopez","nota":9.25},
+    {"codigo":"006","nombre":"Oscar Robledo","nota":8.25},
+    {"codigo":"007","nombre":"Gregorio Cerrano","nota":4.25},
+    {"codigo":"008","nombre":"Marcela Grimaldi","nota":2.25},
+    {"codigo":"009","nombre":"German Sosa","nota":7.80},
+    {"codigo":"010","nombre":"Ignacio Lezacano","nota":9.10}
+  ]};
+
+  var obJson = estudiantes.estudiantes;
+  console.log(obJson);
   $.ShowActions = $.ShowActions || {}
   $.ShowActions.init = function()
   {
@@ -21,10 +37,17 @@
     $('#text-nombre').focus();
     $('#cerrar').attr('disabled',true);
     $('#registrar').attr('disabled',true);
+
+    var item = obJson.length -1;
+    var uCod = obJson[item].codigo;
+    uCod = parseInt(uCod) + 1;
+    uCod = '0' + String(uCod);
+    $('#text-codigo').val(uCod);
+
   },
   $.ShowActions.createTable = function(obJson)
   {
-    var estudiantes = JSON.parse(obJson);
+    var estudiantes = obJson;
 
     $('#tabla').empty();
     $('#tabla').html('<thead><tr><th>Código</th><th>Nombre</th><th>Nota</th></tr></thead>');
@@ -43,7 +66,7 @@
   },
   //muestra el promedio de notas
   $.ShowActions.displayAverage = function(obJson){
-    var estudiantes = JSON.parse(obJson);
+    var estudiantes = obJson;
     var c = 0;
     var p = 0;
     var e = 0;
@@ -62,7 +85,7 @@
   },
   //muestra alumno con mayor nota
   $.ShowActions.displayMax = function(obJson){
-    var estudiantes = JSON.parse(obJson);
+    var estudiantes = obJson;
     var arreglo = [];
     for(var i in estudiantes){
       arreglo[i] = estudiantes[i].nota;
@@ -83,7 +106,7 @@
   },
   //muestra alumno con menor nota
   $.ShowActions.displayMin = function(obJson){
-    var estudiantes = JSON.parse(obJson);
+    var estudiantes = obJson;
     var arreglo = [];
     for(var i in estudiantes){
       arreglo[i] = estudiantes[i].nota;
@@ -102,21 +125,20 @@
       }
     }
   },
-  $.ShowActions.registrar = function(obJson){
+  $.ShowActions.registrar = function(){
 
-    var estudiantes = [] ;
-    estudiantes = JSON.stringify(obJson);
+    //var estudiantes = [] ;
+    //estudiantes = JSON.parse(obJson);
+
+    var data = new Object();
+    data.codigo = $('#text-codigo').val();
+    data.nombre = $('#text-nombre').val();
+    data.nota   = $('#text-nota').val();
+
+    estudiantes.estudiantes.push(data);
+    //obJson.push('{codigo:'+ '"' + cod + '"' +',nombre:'+ '"' + nom + '"' +',nota:'+ not +'}');
     console.log(estudiantes);
-    var cod = $('#text-codigo').val();
-    var nom = $('#text-nombre').val();
-    var not = $('#text-nota').val();
-    console.log(cod + " - " + nom + " - " + not);
-
-    estudiantes.push('{codigo:'+ '"' + cod + '"' +',nombre:'+ '"' + nom + '"' +',nota:'+ not +'}');
-
-    console.log(estudiantes);
-
-    obJson = JSON.parse(estudiantes);
+    return estudiantes;
 
   },
   $.ShowActions.habilita = function(container)
@@ -140,11 +162,7 @@
   })(jQuery);
 $.ShowActions.init();
 
-var item = obJson.length -1;
-var uCod = obJson[item].codigo;
-uCod = parseInt(uCod) + 1;
-uCod = '0' + String(uCod);
-$('#text-codigo').val(uCod);
+
 
 /**
 ("["+ estudiantes[i].codigo,estudiantes[i].nombre,estudiantes[i].nota +"]");
