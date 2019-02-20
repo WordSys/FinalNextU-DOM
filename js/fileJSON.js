@@ -15,6 +15,7 @@
   var obJson = JSON.parse(estudiantes);
 */
 (function($){
+  /*
   var estudiantes ={ "estudiantes":[
     {"codigo":"001","nombre":"Juan Saavedra","nota":7.52},
     {"codigo":"002","nombre":"Mariano Perron","nota":8.32},
@@ -28,8 +29,10 @@
     {"codigo":"010","nombre":"Ignacio Lezacano","nota":9.10}
   ]};
 
-  var obJson = estudiantes.estudiantes;
+  var obJson = estudiantes;
   console.log(obJson);
+  */
+  
   $.ShowActions = $.ShowActions || {}
   $.ShowActions.init = function()
   {
@@ -38,21 +41,23 @@
     $('#cerrar').attr('disabled',true);
     $('#registrar').attr('disabled',true);
 
-    var item = obJson.length -1;
-    var uCod = obJson[item].codigo;
-    uCod = parseInt(uCod) + 1;
-    uCod = '0' + String(uCod);
-    $('#text-codigo').val(uCod);
+    //var item = obJson.length -1;
+    //var uCod = obJson.codigo;
+    //console.log(uCod);
+    //uCod = parseInt(uCod) + 1;
+    //uCod = '0' + String(uCod);
+    //$('#text-codigo').val(uCod);
 
   },
   $.ShowActions.createTable = function(obJson)
   {
     var estudiantes = obJson;
-
+    console.log(estudiantes);debugger;
     $('#tabla').empty();
     $('#tabla').html('<thead><tr><th>Código</th><th>Nombre</th><th>Nota</th></tr></thead>');
     for (var i in estudiantes)
     {
+
       $('#tabla').append(
         '<tr><td>'+ estudiantes[i].codigo +'</td><td>'+ estudiantes[i].nombre +'</td><td>'+ estudiantes[i].nota +'</td></tr>'
       );
