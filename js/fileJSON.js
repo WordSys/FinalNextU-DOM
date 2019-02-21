@@ -147,7 +147,7 @@
     if ($('#text-nombre').val() && $('#text-nota').val() )
     {
       estudiantes.push(dato);
-
+      
       $('#text-nombre').val('');
       $('#text-nota').val('');
       $('#text-nombre').focus();
