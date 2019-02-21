@@ -144,20 +144,31 @@
     var nota = $('#text-nota').val();
     dato.nota   = parseFloat(nota);
 
-    estudiantes.push(dato);
+    if ($('#text-nombre').val() && $('#text-nota').val() )
+    {
+      estudiantes.push(dato);
 
-    $('#text-nombre').val('');
-    $('#text-nota').val('');
-    $('#text-nombre').focus();
-    $('#cerrar').attr('disabled',true);
-    $('#registrar').attr('disabled',true);
+      $('#text-nombre').val('');
+      $('#text-nota').val('');
+      $('#text-nombre').focus();
+      $('#cerrar').attr('disabled',true);
+      $('#registrar').attr('disabled',true);
 
-    var item = estudiantes.length -1;
-    var uCod = estudiantes[item].codigo;
+      var item = estudiantes.length -1;
+      var uCod = estudiantes[item].codigo;
 
-    uCod = parseInt(uCod) + 1;
-    uCod = '0' + String(uCod);
-    $('#text-codigo').val(uCod);
+      uCod = parseInt(uCod) + 1;
+      uCod = '0' + String(uCod);
+      $('#text-codigo').val(uCod);
+    }else{
+      alert('Es obligatorio insertar datos.');
+      $('#text-nombre').val('');
+      $('#text-nota').val('');
+      $('#text-nombre').focus();
+      $('#cerrar').attr('disabled',true);
+      $('#registrar').attr('disabled',true);
+    }
+
   },
   $.ShowActions.habilita = function(container)
   {
