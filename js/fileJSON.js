@@ -16,9 +16,8 @@
         ]
       };
 
-
   $.ShowActions = $.ShowActions || {}
-  $.ShowActions.init = function()
+  $.ShowActions.init = function(estudiantes)
   {
     var estudiantes = data.estudiantes;
 
